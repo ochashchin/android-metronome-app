@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name"><b>M</b>etronome</string>
+    <string name="status">klepnutím obnovíte</string>
+    <string name="no_flash">funkcia nie je podporovaná</string>
+    <string name="dialog_body">Vaša spätná väzba pre nás veľa znamená! Prosím, zanechajte komentár na stránke obchodu.</string>
+    <string name="dialog_head">Prosím, ohodnoťte nás!</string>
+    <string name="dialog_cancel">Neskôr</string>
+    <string name="dialog_ok">Ohodnoťte Teraz</string>
+</resources>

@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name"><b>M</b>etronome</string>
+    <string name="status">puudutage jätkamiseks</string>
+    <string name="no_flash">funktsiooni ei toetata</string>
+    <string name="dialog_body">Teie tagasiside on meile väga oluline! Palun jätke kommentaar poe lehele.</string>
+    <string name="dialog_head">Palun hinnake meid!</string>
+    <string name="dialog_cancel">Hiljem</string>
+    <string name="dialog_ok">Hinnake Kohe</string>
+</resources>

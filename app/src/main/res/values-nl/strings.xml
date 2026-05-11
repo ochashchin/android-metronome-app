@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name"><b>M</b>etronome</string>
+    <string name="status">tik om te hervatten</string>
+    <string name="no_flash">functie niet ondersteund</string>
+    <string name="dialog_body">Uw feedback is erg belangrijk voor ons! Laat een reactie achter op de winkelpagina.</string>
+    <string name="dialog_head">Geef ons een beoordeling!</string>
+    <string name="dialog_cancel">Later</string>
+    <string name="dialog_ok">Nu Beoordelen</string>
+</resources>

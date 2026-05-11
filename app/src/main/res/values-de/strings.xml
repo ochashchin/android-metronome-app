@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name"><b>M</b>etronome</string>
+    <string name="status">tippen sie auf lebenslauf</string>
+    <string name="no_flash">funktion nicht unterstützt</string>
+    <string name="dialog_body">Ihr Feedback ist uns sehr wichtig! Hinterlassen Sie gerne einen Kommentar auf unserer Shopseite.</string>
+    <string name="dialog_head">Bitte bewerten Sie uns!</string>
+    <string name="dialog_cancel">Später</string>
+    <string name="dialog_ok">Jetzt Bewerten</string>
+</resources>

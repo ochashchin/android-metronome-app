@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name"><b>M</b>etronome</string>
+    <string name="status">devam etmek için dokunun</string>
+    <string name="no_flash">özellik desteklenmiyor</string>
+    <string name="dialog_body">Geri bildirimleriniz bizim için çok önemli! Lütfen mağaza sayfasında yorum bırakın.</string>
+    <string name="dialog_head">Lütfen bizi değerlendirin!</string>
+    <string name="dialog_cancel">Sonra</string>
+    <string name="dialog_ok">Şimdi Değerlendirin</string>
+</resources>

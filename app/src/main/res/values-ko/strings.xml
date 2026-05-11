@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name"><b>M</b>etronome</string>
+    <string name="status">다시 시작하려면 탭하십시오</string>
+    <string name="no_flash">지원되지 않는 기능</string>
+    <string name="dialog_body">고객님의 의견은 저희에게 매우 소중합니다! 스토어 페이지에 댓글을 남겨주세요.</string>
+    <string name="dialog_head">평점도 남겨주시면 감사하겠습니다!</string>
+    <string name="dialog_cancel">나중에 평가하기</string>
+    <string name="dialog_ok">지금 평가하기</string>
+</resources>

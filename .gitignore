@@ -1,0 +1,60 @@
+# Gradle
+.gradle/
+build/
+**/build/
+
+# Gradle Wrapper (Hiding from GitHub)
+gradle/
+gradlew
+gradlew.bat
+gradle.properties
+settings.gradle
+
+# Local config
+local.properties
+
+# IDE
+.idea/
+*.iml
+
+# Project Specific
+android-mapper/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Android Studio
+captures/
+output.json
+
+# Native / build intermediates
+.externalNativeBuild/
+.cxx/
+
+# Keystore
+*.jks
+*.keystore
+
+# Google Services
+google-services.json
+**/google-services.json
+
+# APK / AAB
+*.apk
+*.aab
+
+# Profiling / debugging
+*.hprof
+*.stacktrace
+
+# Kotlin / KAPT / KSP
+.kotlin/
+.ksp/
+
+# Editor swap files
+*.swp
+*.swo

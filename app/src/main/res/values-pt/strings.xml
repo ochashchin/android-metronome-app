@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name"><b>M</b>etronome</string>
+    <string name="status">toque para retomar</string>
+    <string name="no_flash">recurso não suportado</string>
+    <string name="dialog_body">O seu feedback é muito importante para nós! Deixe um comentário na página da loja.</string>
+    <string name="dialog_head">Avalie-nos!</string>
+    <string name="dialog_cancel">Mais tarde</string>
+    <string name="dialog_ok">Avalie Agora</string>
+</resources>

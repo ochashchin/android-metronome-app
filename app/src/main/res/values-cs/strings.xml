@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Metronome</string>
+    <string name="status">klepněte na obnovení</string>
+    <string name="no_flash">funkce není podporována</string>
+    <string name="dialog_body">Vaše zpětná vazba pro nás hodně znamená! Zanechte prosím komentář na stránce obchodu.</string>
+    <string name="dialog_head">Ohodnoťte nás!</string>
+    <string name="dialog_cancel">Později</string>
+    <string name="dialog_ok">Ohodnoťte Nyní</string>
+</resources>

@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name"><b>M</b>etronome</string>
+    <string name="status">atingeți pentru a relua</string>
+    <string name="no_flash">caracteristica nu este acceptată</string>
+    <string name="dialog_body">Părerea ta contează foarte mult pentru noi! Te rugăm să lași un comentariu pe pagina magazinului.</string>
+    <string name="dialog_head">Te rugăm să ne evaluezi!</string>
+    <string name="dialog_cancel">Mai târziu</string>
+    <string name="dialog_ok">Evaluează Acum</string>
+</resources>

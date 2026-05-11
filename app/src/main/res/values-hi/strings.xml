@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name"><b>M</b>etronome</string>
+    <string name="status">फिर से शुरू करने के लिए टैप करें</string>
+    <string name="no_flash">सुविधा समर्थित नहीं है</string>
+    <string name="dialog_body">आपका फ़ीडबैक हमारे लिए बहुत मायने रखता है! कृपया स्टोर पेज पर कमेंट करें।</string>
+    <string name="dialog_head">कृपया हमें रेट करें!</string>
+    <string name="dialog_cancel">बाद में</string>
+    <string name="dialog_ok">अभी रेट करें</string>
+</resources>

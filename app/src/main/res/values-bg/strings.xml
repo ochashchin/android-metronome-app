@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Метроном</string>
+    <string name="status">докоснете за възобновяване</string>
+    <string name="no_flash">функция не се поддържа</string>
+    <string name="dialog_body">Вашата обратна връзка е много важна за нас! Моля, оставете коментар на страницата на магазина.</string>
+    <string name="dialog_head">Моля, оценете ни!</string>
+    <string name="dialog_cancel">По-късно</string>
+    <string name="dialog_ok">Оценете Cега</string>
+</resources>

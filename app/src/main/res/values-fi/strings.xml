@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name"><b>M</b>etronome</string>
+    <string name="status">napauta jatkaaksesi</string>
+    <string name="no_flash">ominaisuutta ei tueta</string>
+    <string name="dialog_body">Palautteesi merkitsee meille paljon! Jätä kommentti kaupan sivulle.</string>
+    <string name="dialog_head">Arvioi meidät!</string>
+    <string name="dialog_cancel">Myöhemmin</string>
+    <string name="dialog_ok">Arvioi Nyt</string>
+</resources>

@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Metronome</string>
+    <string name="status">tryk for at genoptage</string>
+    <string name="no_flash">funktion ikke understøttet</string>
+    <string name="dialog_body">Din feedback betyder meget for os! Skriv venligst en kommentar på butiksiden.</string>
+    <string name="dialog_head">Bedøm os venligst!</string>
+    <string name="dialog_cancel">Senere</string>
+    <string name="dialog_ok">Bedøm Nu</string>
+</resources>

@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name"><b>M</b>etronome</string>
+    <string name="status">bakstelėkite norėdami tęsti</string>
+    <string name="no_flash">funkcija nepalaikoma</string>
+    <string name="dialog_body">Jūsų atsiliepimai mums labai svarbūs! Prašome palikti komentarą parduotuvės puslapyje.</string>
+    <string name="dialog_head">Įvertinkite mus!</string>
+    <string name="dialog_cancel">Vėliau</string>
+    <string name="dialog_ok">Įvertinkite Dabar</string>
+</resources>

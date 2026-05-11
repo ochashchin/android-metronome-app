@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name"><b>M</b>etronome</string>
+    <string name="status">tapnite za nadaljevanje</string>
+    <string name="no_flash">funkcija ni podprta</string>
+    <string name="dialog_body">Vaše povratne informacije nam veliko pomenijo! Prosimo, pustite komentar na strani trgovine.</string>
+    <string name="dialog_head">Prosimo, ocenite nas!</string>
+    <string name="dialog_cancel">Kasneje</string>
+    <string name="dialog_ok">Oceni Zdaj</string>
+</resources>

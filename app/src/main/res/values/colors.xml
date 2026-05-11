@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="background_color">#E1E5EE</color>
+    <color name="text_color">#4E5565</color>
+
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303f9f</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="launcher_background_color">#4A8BF4</color>
+
+    <color name="dialog_head_text">#1D1B20</color>
+    <color name="dialog_body_text">#49454F</color>
+    <color name="dialog_button_text">#6750A4</color>
+    <color name="dialog_button_ripple">#336750A4</color>
+</resources>

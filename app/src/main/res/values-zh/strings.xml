@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Metronome</string>
+    <string name="status">点击以恢复</string>
+    <string name="no_flash">不支持的功能</string>
+    <string name="dialog_body">您的反馈对我们非常重要！\n请在店铺页面留言。</string>
+    <string name="dialog_head">请给我们评分!</string>
+    <string name="dialog_cancel">稍后评分</string>
+    <string name="dialog_ok">立即评分</string>
+</resources>

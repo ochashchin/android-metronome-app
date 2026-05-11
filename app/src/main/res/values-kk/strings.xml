@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name"><b>M</b>etronome</string>
+    <string name="status">жалғастыру үшін түртіңіз</string>
+    <string name="no_flash">мүмкіндікке қолдау көрсетілмейді</string>
+    <string name="dialog_body">Сіздің пікіріңіз біз үшін өте маңызды! Дүкен бетінде пікір қалдырыңыз.</string>
+    <string name="dialog_head">Бізге баға беріңіз!</string>
+    <string name="dialog_cancel">Кейінірек</string>
+    <string name="dialog_ok">Қазір Бағалаңыз</string>
+</resources>

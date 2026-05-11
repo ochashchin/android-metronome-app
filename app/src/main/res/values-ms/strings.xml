@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name"><b>M</b>etronome</string>
+    <string name="status">ketik untuk menyambung semula</string>
+    <string name="no_flash">ciri tidak disokong</string>
+    <string name="dialog_body">Maklum balas anda amat bermakna bagi kami! Sila tinggalkan komen di halaman kedai.</string>
+    <string name="dialog_head">Sila nilaikan kami!</string>
+    <string name="dialog_cancel">Nanti</string>
+    <string name="dialog_ok">Nilaikan Sekarang</string>
+</resources>

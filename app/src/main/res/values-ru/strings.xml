@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name"><b>M</b>etronome</string>
+    <string name="status">нажмите, чтобы продолжить</string>
+    <string name="no_flash">функция не поддерживается</string>
+    <string name="dialog_body">Ваш отзыв очень важен для нас! Пожалуйста, оставьте комментарий на странице магазина.</string>
+    <string name="dialog_head">Пожалуйста, оцените!</string>
+    <string name="dialog_cancel">Позже</string>
+    <string name="dialog_ok">Оценить Сейчас</string>
+</resources>

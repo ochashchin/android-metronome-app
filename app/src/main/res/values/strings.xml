@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Metronome</string>
+    <string name="status">tap to resume</string>
+    <string name="no_flash">feature not supported</string>
+    <string name="dialog_body">Your feedback means a lot to us! Please drop a comment on the store page.</string>
+    <string name="dialog_head">Please rate us!</string>
+    <string name="dialog_cancel">Later</string>
+    <string name="dialog_ok">Rate Now</string>
+    <string name="banner_ad_unit_prod_id" translatable="false">ca-app-pub-2874567203173670/6239190546</string>
+    <string name="banner_ad_unit_test_id" translatable="false">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="play_metronome" translatable="false">Play metronome</string>
+</resources>

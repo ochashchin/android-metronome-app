@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">メトロノーム</string>
+    <string name="status">履歴書をタップします</string>
+    <string name="no_flash">機能はサポートされていません</string>
+    <string name="dialog_body">皆様からのフィードバックは私たちにとって大変貴重です！ストアページにコメントをお寄せください。</string>
+    <string name="dialog_head">評価をお願いします！</string>
+    <string name="dialog_cancel">後で</string>
+    <string name="dialog_ok">今すぐ評価</string>
+</resources>

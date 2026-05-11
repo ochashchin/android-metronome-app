@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name"><b>M</b>etronome</string>
+    <string name="status">trykk for å fortsette</string>
+    <string name="no_flash">feature not supported</string>
+    <string name="dialog_body">Tilbakemeldingen din betyr mye for oss! Legg igjen en kommentar på butikksiden.</string>
+    <string name="dialog_head">Gi oss en vurdering!</string>
+    <string name="dialog_cancel">Senere</string>
+    <string name="dialog_ok">Vurder Nå</string>
+</resources>

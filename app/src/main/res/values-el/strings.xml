@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name"><b>M</b>etronome</string>
+    <string name="status">πατήστε για να συνεχίσετε</string>
+    <string name="no_flash">η δυνατότητα δεν υποστηρίζεται</string>
+    <string name="dialog_body">Τα σχόλιά σας είναι πολύ σημαντικά για εμάς! Αφήστε ένα σχόλιο στη σελίδα του καταστήματος.</string>
+    <string name="dialog_head">Παρακαλούμε αξιολογήστε μας!</string>
+    <string name="dialog_cancel">Αργότερα</string>
+    <string name="dialog_ok">Αξιολογήστε τώρα</string>
+</resources>

@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name"><b>M</b>etronome</string>
+    <string name="status">érintse meg a folytatáshoz</string>
+    <string name="no_flash">funkció nem támogatott</string>
+    <string name="dialog_body">A visszajelzésed sokat jelent nekünk! Kérjük, írj egy kommentet az áruház oldalára.</string>
+    <string name="dialog_head">Kérjük, értékelj minket!</string>
+    <string name="dialog_cancel">Később</string>
+    <string name="dialog_ok">Értékelj Most</string>
+</resources>

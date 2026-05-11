@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name"><b>M</b>etronome</string>
+    <string name="status">pieskarieties, lai atsāktu</string>
+    <string name="no_flash">funkcija netiek atbalstīta</string>
+    <string name="dialog_body">Jūsu atsauksmes mums ir ļoti svarīgas! Lūdzu, atstājiet komentāru veikala lapā.</string>
+    <string name="dialog_head">Lūdzu, novērtējiet mūs!</string>
+    <string name="dialog_cancel">Vēlāk</string>
+    <string name="dialog_ok">Novērtējiet Tūlīt</string>
+</resources>

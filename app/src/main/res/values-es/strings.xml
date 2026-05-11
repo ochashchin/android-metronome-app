@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name"><b>M</b>etronome</string>
+    <string name="status">toque para reanudar</string>
+    <string name="no_flash">función no admitida</string>
+    <string name="dialog_body">¡Tus comentarios son muy importantes para nosotros! Deja un comentario en la página de la tienda.</string>
+    <string name="dialog_head">¡Califícanos!</string>
+    <string name="dialog_cancel">Más tarde</string>
+    <string name="dialog_ok">Calificar Ahora</string>
+</resources>
