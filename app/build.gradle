@@ -20,7 +20,7 @@ android {
         targetSdkVersion 36
         versionName '4.0.1'
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        versionCode 28
+        versionCode 30
     }
     buildTypes {
         release {
