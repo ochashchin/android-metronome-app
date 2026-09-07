@@ -1,9 +1,13 @@
 package com.metronome.ui.banner;
 
+import android.os.Build;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowMetrics;
+import android.widget.FrameLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -13,6 +17,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.gmail.specifickarma.metronome.R;
 import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
 
 import dagger.hilt.android.AndroidEntryPoint;
@@ -20,12 +25,9 @@ import dagger.hilt.android.AndroidEntryPoint;
 @AndroidEntryPoint
 public class BannerFragment extends Fragment {
 
-    private static final String ADMOB_UNIT_ID =
-//            "ca-app-pub-2874567203173670/6239190546";
-            "ca-app-pub-3940256099942544/6300978111";  // test id
-
     private BannerViewModel vm;
     private CardView cardView;
+    private FrameLayout adContainer;
     private AdView adView;
 
     @Nullable
@@ -41,7 +43,7 @@ public class BannerFragment extends Fragment {
         vm = new ViewModelProvider(this).get(BannerViewModel.class);
 
         cardView = view.findViewById(R.id.cardView);
-        adView = view.findViewById(R.id.adView);
+        adContainer = view.findViewById(R.id.adContainer);
 
         vm.bannerOnLoad();
 
@@ -66,6 +68,22 @@ public class BannerFragment extends Fragment {
     }
 
     @Override
+    public void onPause() {
+        if (adView != null) {
+            adView.pause();
+        }
+        super.onPause();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (adView != null) {
+            adView.resume();
+        }
+    }
+
+    @Override
     public void onDestroyView() {
         super.onDestroyView();
 
@@ -78,7 +96,43 @@ public class BannerFragment extends Fragment {
     }
 
     private void onLoad() {
+        if (getContext() == null || getActivity() == null) return;
+
+        if (adView == null) {
+            adView = new AdView(requireContext());
+            adView.setAdUnitId(getString(R.string.banner_ad_unit_prod_id));
+            adContainer.removeAllViews();
+            adContainer.addView(adView);
+            adView.setAdSize(getAdSize());
+        }
+
         adView.loadAd(new AdRequest.Builder().build());
+    }
+
+    private AdSize getAdSize() {
+        DisplayMetrics displayMetrics = getResources().getDisplayMetrics();
+        int adWidthPixels = displayMetrics.widthPixels;
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R && getActivity() != null) {
+            WindowMetrics windowMetrics = requireActivity().getWindowManager().getCurrentWindowMetrics();
+            adWidthPixels = windowMetrics.getBounds().width();
+        }
+
+        float density = displayMetrics.density;
+        int adWidth = (int) (adWidthPixels / density);
+
+        // Deduct standard horizontal padding (16dp left + 16dp right)
+        View bannerView = getView();
+        int horizontalPaddingDp;
+        if (bannerView != null && (bannerView.getPaddingLeft() > 0 || bannerView.getPaddingRight() > 0)) {
+            horizontalPaddingDp = (int) ((bannerView.getPaddingLeft() + bannerView.getPaddingRight()) / density);
+        } else {
+            horizontalPaddingDp = 32; // 16dp left + 16dp right
+        }
+
+        adWidth = Math.max(0, adWidth - horizontalPaddingDp);
+
+        return AdSize.getCurrentOrientationAnchoredAdaptiveBannerAdSize(requireContext(), adWidth);
     }
 
     private void animate(boolean animate) {
