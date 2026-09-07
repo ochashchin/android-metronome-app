@@ -30,7 +30,7 @@ public class SplashViewModel extends ViewModel {
     }
 
     public void splashOn() {
-        scheduleTask(() -> engine.splashOn(), 1500);
+        scheduleTask(() -> engine.splashOn(), 2000);
     }
 
     public void splashOff() {
