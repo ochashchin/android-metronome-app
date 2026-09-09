@@ -6,4 +6,5 @@
     <string name="dialog_head">Bitte bewerten Sie uns!</string>
     <string name="dialog_cancel">Später</string>
     <string name="dialog_ok">Jetzt Bewerten</string>
+    <string name="press_to_start">Zum Starten drücken</string>
 </resources>

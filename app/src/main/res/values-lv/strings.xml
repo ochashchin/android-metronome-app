@@ -6,4 +6,5 @@
     <string name="dialog_head">Lūdzu, novērtējiet mūs!</string>
     <string name="dialog_cancel">Vēlāk</string>
     <string name="dialog_ok">Novērtējiet Tūlīt</string>
+    <string name="press_to_start">Nospiediet, lai sāktu</string>
 </resources>

@@ -6,4 +6,5 @@
     <string name="dialog_head">Arvioi meidät!</string>
     <string name="dialog_cancel">Myöhemmin</string>
     <string name="dialog_ok">Arvioi Nyt</string>
+    <string name="press_to_start">Paina aloittaaksesi</string>
 </resources>

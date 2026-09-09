@@ -9,5 +9,6 @@ public interface HomeEngine {
     void stop();
     void setMode(Mode mode);
     void setProgress(int progress);
+    void setTooltip(boolean tooltip);
     AppState<HomeState> getState();
 }

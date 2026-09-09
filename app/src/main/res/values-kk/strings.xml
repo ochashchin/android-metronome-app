@@ -6,4 +6,5 @@
     <string name="dialog_head">Бізге баға беріңіз!</string>
     <string name="dialog_cancel">Кейінірек</string>
     <string name="dialog_ok">Қазір Бағалаңыз</string>
+    <string name="press_to_start">Бастау үшін басыңыз</string>
 </resources>

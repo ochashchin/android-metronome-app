@@ -69,7 +69,7 @@ public class MetronomeEngine implements HomeEngine, SplashEngine, ReviewDialogEn
         });
 
         engineThread.start();
-        state.setValue(state.getValue().copyIsPlaying(true));
+        state.setValue(state.getValue().copyIsPlaying(true).copyTooltip(false));
     }
 
     private void executeHardwareAction(Mode mode) {
@@ -109,6 +109,11 @@ public class MetronomeEngine implements HomeEngine, SplashEngine, ReviewDialogEn
     @Override
     public void setProgress(int progress) {
         state.setValue(state.getValue().copyProgress(progress));
+    }
+
+    @Override
+    public void setTooltip(boolean tooltip) {
+        state.setValue(state.getValue().copyTooltip(tooltip));
     }
 
     @Override

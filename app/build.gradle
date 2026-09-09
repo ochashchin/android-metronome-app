@@ -20,11 +20,13 @@ android {
         targetSdkVersion 36
         versionName '4.0.1'
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        versionCode 30
+        versionCode 31
     }
     buildTypes {
         release {
             debuggable false
+            minifyEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
         }

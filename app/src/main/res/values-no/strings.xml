@@ -6,4 +6,5 @@
     <string name="dialog_head">Gi oss en vurdering!</string>
     <string name="dialog_cancel">Senere</string>
     <string name="dialog_ok">Vurder Nå</string>
+    <string name="press_to_start">Trykk for å starte</string>
 </resources>

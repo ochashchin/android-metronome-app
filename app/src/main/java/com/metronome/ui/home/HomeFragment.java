@@ -62,6 +62,12 @@ public class HomeFragment extends Fragment {
             bpmSlider.setPlaying(state.isPlaying());
             playBtn.setPlaying(state.isPlaying());
             modeSlider.setPlaying(state.isPlaying());
+            if (state.isTooltip() && !state.isPlaying()) {
+                playBtn.setTooltip(true);
+                vm.setTooltip(false);
+            } else if (state.isPlaying()) {
+                playBtn.setTooltip(false);
+            }
         });
     }
 }

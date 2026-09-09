@@ -6,4 +6,5 @@
     <string name="dialog_head">Geef ons een beoordeling!</string>
     <string name="dialog_cancel">Later</string>
     <string name="dialog_ok">Nu Beoordelen</string>
+    <string name="press_to_start">Druk om te starten</string>
 </resources>

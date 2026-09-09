@@ -6,4 +6,5 @@
     <string name="dialog_head">Te rugăm să ne evaluezi!</string>
     <string name="dialog_cancel">Mai târziu</string>
     <string name="dialog_ok">Evaluează Acum</string>
+    <string name="press_to_start">Apăsați pentru a începe</string>
 </resources>

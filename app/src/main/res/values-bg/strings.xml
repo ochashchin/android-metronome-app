@@ -6,4 +6,5 @@
     <string name="dialog_head">Моля, оценете ни!</string>
     <string name="dialog_cancel">По-късно</string>
     <string name="dialog_ok">Оценете Cега</string>
+    <string name="press_to_start">Натиснете за старт</string>
 </resources>

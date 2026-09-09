@@ -9,4 +9,5 @@
     <string name="banner_ad_unit_prod_id" translatable="false">ca-app-pub-2874567203173670/6239190546</string>
     <string name="banner_ad_unit_test_id" translatable="false">ca-app-pub-3940256099942544/6300978111</string>
     <string name="play_metronome" translatable="false">Play metronome</string>
+    <string name="press_to_start">Press to Start</string>
 </resources>

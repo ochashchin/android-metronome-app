@@ -6,4 +6,5 @@
     <string name="dialog_head">Palun hinnake meid!</string>
     <string name="dialog_cancel">Hiljem</string>
     <string name="dialog_ok">Hinnake Kohe</string>
+    <string name="press_to_start">Vajutage alustamiseks</string>
 </resources>

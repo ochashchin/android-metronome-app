@@ -54,7 +54,38 @@ public class SplashFragment extends Fragment {
         metro = view.findViewById(R.id.metro);
         nome = view.findViewById(R.id.nome);
 
+        if (savedInstanceState != null) {
+            fastForwardSplash(view);
+            return;
+        }
+
         observeState();
+    }
+
+    private void fastForwardSplash(View view) {
+        View wrapper = view.findViewById(R.id.metro_nome_wrapper);
+        if (wrapper != null) {
+            wrapper.setVisibility(View.GONE);
+        }
+        if (vignette != null) {
+            vignette.setAlpha(1f);
+        }
+        ConstraintLayout targetView = view.findViewById(R.id.controls);
+        if (targetView != null && targetView.getParent() instanceof ConstraintLayout) {
+            ConstraintLayout parent = (ConstraintLayout) targetView.getParent();
+            ConstraintSet set = new ConstraintSet();
+            set.clone(parent);
+            int viewId = targetView.getId();
+            set.clear(viewId, ConstraintSet.START);
+            set.clear(viewId, ConstraintSet.END);
+            set.connect(viewId, ConstraintSet.START, ConstraintSet.PARENT_ID, ConstraintSet.START);
+            set.connect(viewId, ConstraintSet.END, ConstraintSet.PARENT_ID, ConstraintSet.END);
+            set.connect(viewId, ConstraintSet.TOP, ConstraintSet.PARENT_ID, ConstraintSet.TOP);
+            set.connect(viewId, ConstraintSet.BOTTOM, ConstraintSet.PARENT_ID, ConstraintSet.BOTTOM);
+            set.constrainWidth(viewId, ConstraintSet.MATCH_CONSTRAINT);
+            set.constrainHeight(viewId, ConstraintSet.MATCH_CONSTRAINT);
+            set.applyTo(parent);
+        }
     }
 
     private void observeState() {
@@ -144,12 +175,33 @@ public class SplashFragment extends Fragment {
 
         if (animate) {
             boolean isModern = Build.VERSION.SDK_INT > Build.VERSION_CODES.P;
-            TransitionManager.beginDelayedTransition(targetView,
-                    new TransitionSet()
-                            .setStartDelay(isModern ? 2500L : 500L)
-                            .setDuration(isModern ? 2000L : 800L)
-                            .addTransition(new AutoTransition())
-                            .setInterpolator(new AnticipateOvershootInterpolator(1f)));
+            TransitionSet transitionSet = new TransitionSet()
+                    .setStartDelay(isModern ? 2500L : 500L)
+                    .setDuration(isModern ? 2000L : 800L)
+                    .addTransition(new AutoTransition())
+                    .setInterpolator(new AnticipateOvershootInterpolator(1f));
+
+            transitionSet.addListener(new Transition.TransitionListener() {
+                @Override
+                public void onTransitionStart(Transition transition) {}
+
+                @Override
+                public void onTransitionEnd(Transition transition) {
+                    transition.removeListener(this);
+                    vm.setTooltip(true);
+                }
+
+                @Override
+                public void onTransitionCancel(Transition transition) {}
+
+                @Override
+                public void onTransitionPause(Transition transition) {}
+
+                @Override
+                public void onTransitionResume(Transition transition) {}
+            });
+
+            TransitionManager.beginDelayedTransition(targetView, transitionSet);
         }
 
         set.applyTo(parent);

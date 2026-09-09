@@ -6,4 +6,5 @@
     <string name="dialog_head">Betygsätt oss gärna!</string>
     <string name="dialog_cancel">Senare</string>
     <string name="dialog_ok">Betygsätt Nu</string>
+    <string name="press_to_start">Tryck för att starta</string>
 </resources>

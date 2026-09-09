@@ -6,4 +6,5 @@
     <string name="dialog_head">Bedøm os venligst!</string>
     <string name="dialog_cancel">Senere</string>
     <string name="dialog_ok">Bedøm Nu</string>
+    <string name="press_to_start">Tryk for at starte</string>
 </resources>

@@ -6,4 +6,5 @@
     <string name="dialog_head">Prosimo, ocenite nas!</string>
     <string name="dialog_cancel">Kasneje</string>
     <string name="dialog_ok">Oceni Zdaj</string>
+    <string name="press_to_start">Pritisnite za začetek</string>
 </resources>

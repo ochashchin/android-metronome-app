@@ -6,4 +6,5 @@
     <string name="dialog_head">Prosím, ohodnoťte nás!</string>
     <string name="dialog_cancel">Neskôr</string>
     <string name="dialog_ok">Ohodnoťte Teraz</string>
+    <string name="press_to_start">Stlačte pre spustenie</string>
 </resources>

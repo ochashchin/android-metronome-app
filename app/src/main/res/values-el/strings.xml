@@ -6,4 +6,5 @@
     <string name="dialog_head">Παρακαλούμε αξιολογήστε μας!</string>
     <string name="dialog_cancel">Αργότερα</string>
     <string name="dialog_ok">Αξιολογήστε τώρα</string>
+    <string name="press_to_start">Πατήστε για έναρξη</string>
 </resources>

@@ -6,4 +6,5 @@
     <string name="dialog_head">Kérjük, értékelj minket!</string>
     <string name="dialog_cancel">Később</string>
     <string name="dialog_ok">Értékelj Most</string>
+    <string name="press_to_start">Nyomja meg az indításhoz</string>
 </resources>

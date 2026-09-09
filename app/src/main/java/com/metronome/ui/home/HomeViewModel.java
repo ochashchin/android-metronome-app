@@ -60,4 +60,8 @@ public class HomeViewModel extends ViewModel {
     public void setProgress(int progress) {
         engine.setProgress(progress);
     }
+
+    public void setTooltip(boolean tooltip) {
+        engine.setTooltip(tooltip);
+    }
 }

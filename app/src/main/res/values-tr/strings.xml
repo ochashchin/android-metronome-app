@@ -6,4 +6,5 @@
     <string name="dialog_head">Lütfen bizi değerlendirin!</string>
     <string name="dialog_cancel">Sonra</string>
     <string name="dialog_ok">Şimdi Değerlendirin</string>
+    <string name="press_to_start">Başlatmak için basın</string>
 </resources>

@@ -4,11 +4,17 @@ public class HomeState {
     private final boolean isPlaying;
     private final Mode mode;
     private final float progress;
+    private final boolean tooltip;
 
-    public HomeState(boolean isPlaying, Mode mode, float progress) {
+    public HomeState(boolean isPlaying, Mode mode, float progress, boolean tooltip) {
         this.isPlaying = isPlaying;
         this.mode = mode;
         this.progress = progress;
+        this.tooltip = tooltip;
+    }
+
+    public HomeState(boolean isPlaying, Mode mode, float progress) {
+        this(isPlaying, mode, progress, false);
     }
 
     public int getBpm() {
@@ -22,18 +28,23 @@ public class HomeState {
     }
 
     public HomeState copyIsPlaying(boolean isPlaying) {
-        return new HomeState(isPlaying, this.mode, this.progress);
+        return new HomeState(isPlaying, this.mode, this.progress, this.tooltip);
     }
 
     public HomeState copyMode(Mode mode) {
-        return new HomeState(this.isPlaying, mode, this.progress);
+        return new HomeState(this.isPlaying, mode, this.progress, this.tooltip);
     }
 
     public HomeState copyProgress(float progress) {
-        return new HomeState(this.isPlaying, this.mode, progress);
+        return new HomeState(this.isPlaying, this.mode, progress, this.tooltip);
+    }
+
+    public HomeState copyTooltip(boolean tooltip) {
+        return new HomeState(this.isPlaying, this.mode, this.progress, tooltip);
     }
 
     public boolean isPlaying() { return isPlaying; }
     public Mode getMode() { return mode; }
     public float getProgress() { return progress; }
+    public boolean isTooltip() { return tooltip; }
 }

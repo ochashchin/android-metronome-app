@@ -6,4 +6,5 @@
     <string name="dialog_head">¡Califícanos!</string>
     <string name="dialog_cancel">Más tarde</string>
     <string name="dialog_ok">Calificar Ahora</string>
+    <string name="press_to_start">Presiona para iniciar</string>
 </resources>

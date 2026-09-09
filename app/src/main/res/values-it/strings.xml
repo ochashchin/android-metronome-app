@@ -6,4 +6,5 @@
     <string name="dialog_head">Per favore, lasciaci una valutazione!</string>
     <string name="dialog_cancel">Più tardi</string>
     <string name="dialog_ok">Valuta Ora</string>
+    <string name="press_to_start">Premi per iniziare</string>
 </resources>

@@ -37,6 +37,10 @@ public class SplashViewModel extends ViewModel {
         scheduleTask(() -> engine.splashOff(), 0);
     }
 
+    public void setTooltip(boolean tooltip) {
+        engine.setTooltip(tooltip);
+    }
+
     private void scheduleTask(Runnable engineAction, long delayMs) {
         scheduler.schedule(() -> {
             engineAction.run();

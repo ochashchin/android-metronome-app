@@ -6,4 +6,5 @@
     <string name="dialog_head">Įvertinkite mus!</string>
     <string name="dialog_cancel">Vėliau</string>
     <string name="dialog_ok">Įvertinkite Dabar</string>
+    <string name="press_to_start">Paspauskite norėdami pradėti</string>
 </resources>
