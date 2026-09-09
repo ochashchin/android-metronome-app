@@ -10,7 +10,7 @@ android {
             keyAlias 'metronome-sing-key'
             keyPassword 'metro1055'
             storePassword 'key-store-1055'
-            storeFile file('G:\\AndroidStudioProjects\\android\\metronome-key-store.jks')
+            storeFile file('C:\\Users\\TechnoPlus\\Desktop\\metronome-key-store.jks')
         }
     }
     compileSdk 36

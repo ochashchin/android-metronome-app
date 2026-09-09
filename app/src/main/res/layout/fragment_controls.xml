@@ -7,10 +7,11 @@
         android:id="@+id/col"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        app:layout_constraintWidth_max="420dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintDimensionRatio="657:891"
+        app:layout_constraintDimensionRatio="411:891"
         app:layout_constraintTop_toTopOf="parent"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
