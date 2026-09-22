@@ -6,5 +6,5 @@
     <color name="dialog_head_text">#E6E0E9</color>
     <color name="dialog_body_text">#CAC4D0</color>
     <color name="dialog_button_text">#D0BCFE</color>
-    <color name="dialog_button_ripple">#33D0BCFE</color>
+    <color name="dialog_button_ripple">#0ED0BCFE</color>
 </resources>

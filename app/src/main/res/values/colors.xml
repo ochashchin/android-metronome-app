@@ -12,5 +12,5 @@
     <color name="dialog_head_text">#1D1B20</color>
     <color name="dialog_body_text">#49454F</color>
     <color name="dialog_button_text">#6750A4</color>
-    <color name="dialog_button_ripple">#336750A4</color>
+    <color name="dialog_button_ripple">#0E6750A4</color>
 </resources>
