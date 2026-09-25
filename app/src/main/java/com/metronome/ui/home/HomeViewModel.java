@@ -4,12 +4,13 @@ import android.app.Application;
 import android.content.Intent;
 import android.os.Build;
 
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.metronome.core.engine.HomeEngine;
 import com.metronome.core.model.Mode;
 import com.metronome.core.model.HomeState;
-import com.metronome.core.util.AppState;
 import com.metronome.service.MetronomeService;
 
 import javax.inject.Inject;
@@ -21,20 +22,23 @@ public class HomeViewModel extends ViewModel {
 
     private final HomeEngine engine;
     private final Application application;
-    public final AppState<HomeState> state;
+
+    private final MutableLiveData<HomeState> _state = new MutableLiveData<>();
+    public final LiveData<HomeState> state = _state;
 
     @Inject
     public HomeViewModel(HomeEngine engine, Application application) {
         this.application = application;
         this.engine = engine;
-        this.state = engine.getState();
+        this.engine.getState().observe(s -> _state.postValue(s));
     }
 
     public void toggle() {
-        boolean wasPlaying = state.getValue().isPlaying();
-        Intent intent = new Intent(application, MetronomeService.class);
+        HomeState current = state.getValue();
+        if (current == null) return;
 
-        if (wasPlaying) {
+        Intent intent = new Intent(application, MetronomeService.class);
+        if (current.isPlaying()) {
             intent.setAction("STOP");
             application.startService(intent);
         } else {
@@ -45,12 +49,6 @@ public class HomeViewModel extends ViewModel {
                 application.startService(intent);
             }
         }
-    }
-
-    public void stop() {
-        Intent intent = new Intent(application, MetronomeService.class);
-        intent.setAction("STOP");
-        application.startService(intent);
     }
 
     public void setMode(Mode mode) {

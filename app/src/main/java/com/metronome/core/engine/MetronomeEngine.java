@@ -78,9 +78,11 @@ public class MetronomeEngine implements HomeEngine, SplashEngine, ReviewDialogEn
                 sound.tick();
                 break;
             case FLASH:
+                state.setValue(state.getValue().copyFlashBlink());
                 flash.blink();
                 break;
             case PULSE:
+                state.setValue(state.getValue().copyPulseBounce());
                 vibrator.vibrate();
                 break;
         }

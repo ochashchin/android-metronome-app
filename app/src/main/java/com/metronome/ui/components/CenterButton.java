@@ -49,6 +49,26 @@ public class CenterButton extends ConstraintLayout implements Transition {
         updateUI();
     }
 
+    public interface OnTooltipShownListener {
+        void onTooltipShown();
+    }
+
+    private OnTooltipShownListener tooltipShownListener;
+
+    public void setOnTooltipShownListener(OnTooltipShownListener listener) {
+        this.tooltipShownListener = listener;
+    }
+
+    public void setPlayingState(boolean isPlaying, boolean isTooltip) {
+        setPlaying(isPlaying);
+        if (isTooltip && !isPlaying) {
+            setTooltip(true);
+            if (tooltipShownListener != null) tooltipShownListener.onTooltipShown();
+        } else if (isPlaying) {
+            setTooltip(false);
+        }
+    }
+
     public void setTooltip(boolean show) {
         if (show) {
             showTooltip(3000L);

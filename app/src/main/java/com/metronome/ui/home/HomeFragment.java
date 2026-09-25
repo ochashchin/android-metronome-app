@@ -12,9 +12,10 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.gmail.specifickarma.metronome.R;
-import com.metronome.ui.components.TopSliderBar;
-import com.metronome.ui.components.CenterButton;
 import com.metronome.ui.components.BottomSliderBar;
+import com.metronome.ui.components.CenterButton;
+import com.metronome.ui.components.FlashOverlayView;
+import com.metronome.ui.components.TopSliderBar;
 
 import dagger.hilt.android.AndroidEntryPoint;
 
@@ -29,6 +30,7 @@ public class HomeFragment extends Fragment {
     private TopSliderBar bpmSlider;
     private BottomSliderBar modeSlider;
     private CenterButton playBtn;
+    private FlashOverlayView flashOverlay;
 
     @Nullable
     @Override
@@ -47,27 +49,33 @@ public class HomeFragment extends Fragment {
         bpmSlider = view.findViewById(R.id.t_s_b);
         modeSlider = view.findViewById(R.id.b_s);
         playBtn = view.findViewById(R.id.c_b);
+        flashOverlay = view.findViewById(R.id.flash_overlay);
 
         bpmSlider.setOnProgressChangeListener(progress -> vm.setProgress(progress));
-
         modeSlider.setOnModeSelectedListener(mode -> vm.setMode(mode));
-
         playBtn.setOnClickListener(v -> vm.toggle());
+        playBtn.setOnTooltipShownListener(() -> vm.setTooltip(false));
 
-        vm.state.observe(state -> {
+        vm.state.observe(getViewLifecycleOwner(), state -> {
+            if (state == null) return;
             bpmText.setText(String.valueOf(state.getBpm()));
             msText.setText(String.valueOf(state.getMs()));
             modeSlider.setMode(state.getMode());
             bpmSlider.setProgress(state.getProgress());
-            bpmSlider.setPlaying(state.isPlaying());
-            playBtn.setPlaying(state.isPlaying());
+            bpmSlider.setPlaying(state.isPlaying(), state.getMode());
             modeSlider.setPlaying(state.isPlaying());
-            if (state.isTooltip() && !state.isPlaying()) {
-                playBtn.setTooltip(true);
-                vm.setTooltip(false);
-            } else if (state.isPlaying()) {
-                playBtn.setTooltip(false);
-            }
+            flashOverlay.setPlaying(state.isPlaying(), state.getMode());
+            playBtn.setPlayingState(state.isPlaying(), state.isTooltip());
+
+            if (state.isFlashBlink()) flashOverlay.blink();
+            if (state.isPulseBounce()) bpmSlider.pulse();
         });
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        flashOverlay.reset();
+        bpmSlider.resetPulse();
     }
 }

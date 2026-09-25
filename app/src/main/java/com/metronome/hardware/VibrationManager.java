@@ -19,7 +19,6 @@ public class VibrationManager {
 
     @Inject
     public VibrationManager(@ApplicationContext Context context) {
-        // Initialize the vibrator once during injection
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
             VibratorManager vm = (VibratorManager) context.getSystemService(Context.VIBRATOR_MANAGER_SERVICE);
             this.vibrator = vm != null ? vm.getDefaultVibrator() : null;
@@ -28,19 +27,12 @@ public class VibrationManager {
         }
     }
 
-    /**
-     * Triggers a single vibration pulse based on the Android version.
-     */
     public void vibrate() {
         if (vibrator == null || !vibrator.hasVibrator()) return;
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            // Use VibrationEffect for API 26+
-            vibrator.vibrate(
-                    VibrationEffect.createOneShot(DURATION, VibrationEffect.DEFAULT_AMPLITUDE)
-            );
+            vibrator.vibrate(VibrationEffect.createOneShot(DURATION, VibrationEffect.DEFAULT_AMPLITUDE));
         } else {
-            // Deprecated vibration call for older versions
             vibrator.vibrate(DURATION);
         }
     }

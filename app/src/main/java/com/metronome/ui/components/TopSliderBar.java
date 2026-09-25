@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.gmail.specifickarma.metronome.R;
+import com.metronome.core.model.Mode;
 
 public class TopSliderBar extends ConstraintLayout implements Transition {
 
@@ -48,7 +49,56 @@ public class TopSliderBar extends ConstraintLayout implements Transition {
 
     public void setPlaying(boolean isPlaying) {
         this.isOnOff = isPlaying;
+        if (!isPlaying) {
+            resetPulse();
+        }
         updateUI();
+    }
+
+    public void setPlaying(boolean isPlaying, Mode mode) {
+        this.isOnOff = isPlaying;
+        if (!isPlaying || mode != Mode.PULSE) {
+            resetPulse();
+        }
+        updateUI();
+    }
+
+    public void pulse() {
+        Runnable action = () -> {
+            animate().cancel();
+            setScaleX(1.0f);
+            setScaleY(1.0f);
+            animate()
+                    .scaleX(1.03f)
+                    .scaleY(1.03f)
+                    .setDuration(50)
+                    .withEndAction(() -> {
+                        animate()
+                                .scaleX(1.0f)
+                                .scaleY(1.0f)
+                                .setDuration(80)
+                                .start();
+                    })
+                    .start();
+        };
+        if (android.os.Looper.myLooper() == android.os.Looper.getMainLooper()) {
+            action.run();
+        } else {
+            post(action);
+        }
+    }
+
+    public void resetPulse() {
+        Runnable action = () -> {
+            animate().cancel();
+            setScaleX(1.0f);
+            setScaleY(1.0f);
+        };
+        if (android.os.Looper.myLooper() == android.os.Looper.getMainLooper()) {
+            action.run();
+        } else {
+            post(action);
+        }
     }
 
     private void updateUI() {
