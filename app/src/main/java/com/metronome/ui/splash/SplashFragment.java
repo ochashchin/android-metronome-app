@@ -188,6 +188,7 @@ public class SplashFragment extends Fragment {
                 @Override
                 public void onTransitionEnd(Transition transition) {
                     transition.removeListener(this);
+                    expandControlsToFullScreen(targetView, parent);
                     vm.setTooltip(true);
                 }
 
@@ -202,8 +203,28 @@ public class SplashFragment extends Fragment {
             });
 
             TransitionManager.beginDelayedTransition(targetView, transitionSet);
+        } else {
+            expandControlsToFullScreen(targetView, parent);
         }
 
+        set.applyTo(parent);
+    }
+
+    private void expandControlsToFullScreen(ConstraintLayout targetView, ConstraintLayout parent) {
+        if (targetView == null || parent == null) return;
+        int viewId = targetView.getId();
+        ConstraintSet set = new ConstraintSet();
+        set.clone(parent);
+        set.clear(viewId, ConstraintSet.START);
+        set.clear(viewId, ConstraintSet.END);
+        set.clear(viewId, ConstraintSet.LEFT);
+        set.clear(viewId, ConstraintSet.RIGHT);
+        set.connect(viewId, ConstraintSet.START, ConstraintSet.PARENT_ID, ConstraintSet.START);
+        set.connect(viewId, ConstraintSet.END, ConstraintSet.PARENT_ID, ConstraintSet.END);
+        set.connect(viewId, ConstraintSet.TOP, ConstraintSet.PARENT_ID, ConstraintSet.TOP);
+        set.connect(viewId, ConstraintSet.BOTTOM, ConstraintSet.PARENT_ID, ConstraintSet.BOTTOM);
+        set.constrainWidth(viewId, ConstraintSet.MATCH_CONSTRAINT);
+        set.constrainHeight(viewId, ConstraintSet.MATCH_CONSTRAINT);
         set.applyTo(parent);
     }
 
