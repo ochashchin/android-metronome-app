@@ -8,7 +8,7 @@ Modernized Android metronome application built with MVVM architecture, reusable 
 
 | Splash | Sound | Flash | Pulse |
 |:---:|:---:|:---:|:---:|
-| <img src="screenshots/promo1.png" width="220"/> | <img src="screenshots/promo2.png" width="220"/> | <img src="screenshots/promo3.png" width="220"/> | <img src="screenshots/promo4.png" width="220"/> |
+| <img src="screenshots/iphone_splash.png" width="220"/> | <img src="screenshots/iphone_sound.png" width="220"/> | <img src="screenshots/iphone_flash.png" width="220"/> | <img src="screenshots/iphone_pulse.png" width="220"/> |
 
 ## Features
 
