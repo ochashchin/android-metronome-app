@@ -27,13 +27,13 @@
 
         <ImageView
             android:id="@+id/_3"
-            android:layout_width="40dp"
+            android:layout_width="30dp"
             android:layout_height="40dp"
             android:layout_marginTop="24dp"
             android:alpha="0.9"
-            android:visibility="invisible"
+            android:visibility="visible"
             android:scaleType="fitCenter"
-            android:src="@drawable/trending_up"
+            android:src="@drawable/mood_24px"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
