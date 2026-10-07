@@ -2,7 +2,6 @@ package com.metronome.ui.components;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -163,7 +162,7 @@ public class TopSliderBar extends ConstraintLayout implements Transition {
     }
 
     private boolean constrainAngleSearchRegion(View button, MotionEvent event) {
-        int rotDeg = getRotDeg(button, event);
+        int rotDeg = getRotDeg(this, event);
         if (Math.abs(Math.abs(rotDeg) - Math.abs(button.getRotation())) <= 30) {
             if (rotDeg >= -45 || rotDeg <= -135) {
                 return true;
@@ -172,12 +171,10 @@ public class TopSliderBar extends ConstraintLayout implements Transition {
         return false;
     }
 
-    private int getRotDeg(View button, MotionEvent event) {
-        int rotDeg;
-        Rect rectf = new Rect();
-        button.getGlobalVisibleRect(rectf);
-        rotDeg = (int) (Math.toDegrees(Math.atan2(rectf.centerY() - event.getRawY(), rectf.centerX() - event.getRawX())));
-        return rotDeg;
+    private int getRotDeg(View view, MotionEvent event) {
+        float centerX = view.getWidth() / 2.0f;
+        float centerY = view.getHeight() / 2.0f;
+        return (int) Math.toDegrees(Math.atan2(centerY - event.getY(), centerX - event.getX()));
     }
 
     private float getPercentage(float value) {
