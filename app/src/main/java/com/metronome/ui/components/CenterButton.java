@@ -1,5 +1,7 @@
 package com.metronome.ui.components;
 
+import static android.os.Looper.*;
+
 import android.content.Context;
 import android.os.Build;
 import android.util.AttributeSet;
@@ -9,6 +11,7 @@ import androidx.appcompat.widget.TooltipCompat;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.gmail.specifickarma.metronome.R;
+import com.metronome.core.model.Mode;
 
 public class CenterButton extends ConstraintLayout implements Transition {
 
@@ -42,11 +45,71 @@ public class CenterButton extends ConstraintLayout implements Transition {
     }
 
     public void setPlaying(boolean isPlaying) {
+        if (!isPlaying) {
+            resetPulse();
+        }
+        if (this.isOnOff == isPlaying) return;
         this.isOnOff = isPlaying;
         if (isPlaying) {
             hideTooltip();
         }
         updateUI();
+    }
+
+    public void setPlaying(boolean isPlaying, Mode mode) {
+        if (!isPlaying || mode != Mode.PULSE) {
+            resetPulse();
+        }
+        if (this.isOnOff == isPlaying) return;
+        this.isOnOff = isPlaying;
+        if (isPlaying) {
+            hideTooltip();
+        }
+        updateUI();
+    }
+
+    private View getTarget() {
+        return getParent() instanceof View ? (View) getParent() : this;
+    }
+
+    public void pulse() {
+        Runnable action = () -> {
+            View target = getTarget();
+            target.animate().cancel();
+            target.setScaleX(1.0f);
+            target.setScaleY(1.0f);
+            target.animate()
+                    .scaleX(1.03f)
+                    .scaleY(1.03f)
+                    .setDuration(50)
+                    .withEndAction(() -> {
+                        target.animate()
+                                .scaleX(1.0f)
+                                .scaleY(1.0f)
+                                .setDuration(80)
+                                .start();
+                    })
+                    .start();
+        };
+        if (myLooper() == getMainLooper()) {
+            action.run();
+        } else {
+            post(action);
+        }
+    }
+
+    public void resetPulse() {
+        Runnable action = () -> {
+            View target = getTarget();
+            target.animate().cancel();
+            target.setScaleX(1.0f);
+            target.setScaleY(1.0f);
+        };
+        if (myLooper() == getMainLooper()) {
+            action.run();
+        } else {
+            post(action);
+        }
     }
 
     public interface OnTooltipShownListener {
@@ -61,6 +124,16 @@ public class CenterButton extends ConstraintLayout implements Transition {
 
     public void setPlayingState(boolean isPlaying, boolean isTooltip) {
         setPlaying(isPlaying);
+        if (isTooltip && !isPlaying) {
+            setTooltip(true);
+            if (tooltipShownListener != null) tooltipShownListener.onTooltipShown();
+        } else if (isPlaying) {
+            setTooltip(false);
+        }
+    }
+
+    public void setPlayingState(boolean isPlaying, boolean isTooltip, Mode mode) {
+        setPlaying(isPlaying, mode);
         if (isTooltip && !isPlaying) {
             setTooltip(true);
             if (tooltipShownListener != null) tooltipShownListener.onTooltipShown();
@@ -115,6 +188,7 @@ public class CenterButton extends ConstraintLayout implements Transition {
     @Override
     protected void onDetachedFromWindow() {
         super.onDetachedFromWindow();
+        resetPulse();
         if (hideTooltipRunnable != null) {
             removeCallbacks(hideTooltipRunnable);
             hideTooltipRunnable = null;

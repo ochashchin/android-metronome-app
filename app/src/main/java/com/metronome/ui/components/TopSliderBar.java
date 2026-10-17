@@ -1,5 +1,7 @@
 package com.metronome.ui.components;
 
+import static android.os.Looper.*;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.AttributeSet;
@@ -47,18 +49,20 @@ public class TopSliderBar extends ConstraintLayout implements Transition {
     }
 
     public void setPlaying(boolean isPlaying) {
-        this.isOnOff = isPlaying;
         if (!isPlaying) {
             resetPulse();
         }
+        if (this.isOnOff == isPlaying) return;
+        this.isOnOff = isPlaying;
         updateUI();
     }
 
     public void setPlaying(boolean isPlaying, Mode mode) {
-        this.isOnOff = isPlaying;
         if (!isPlaying || mode != Mode.PULSE) {
             resetPulse();
         }
+        if (this.isOnOff == isPlaying) return;
+        this.isOnOff = isPlaying;
         updateUI();
     }
 
@@ -80,7 +84,7 @@ public class TopSliderBar extends ConstraintLayout implements Transition {
                     })
                     .start();
         };
-        if (android.os.Looper.myLooper() == android.os.Looper.getMainLooper()) {
+        if (myLooper() == getMainLooper()) {
             action.run();
         } else {
             post(action);
@@ -93,7 +97,7 @@ public class TopSliderBar extends ConstraintLayout implements Transition {
             setScaleX(1.0f);
             setScaleY(1.0f);
         };
-        if (android.os.Looper.myLooper() == android.os.Looper.getMainLooper()) {
+        if (myLooper() == getMainLooper()) {
             action.run();
         } else {
             post(action);
@@ -199,5 +203,11 @@ public class TopSliderBar extends ConstraintLayout implements Transition {
 
     private float clamp(float val, float min, float max) {
         return Math.max(min, Math.min(max, val));
+    }
+
+    @Override
+    protected void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+        resetPulse();
     }
 }

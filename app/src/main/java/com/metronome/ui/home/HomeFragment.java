@@ -65,10 +65,13 @@ public class HomeFragment extends Fragment {
             bpmSlider.setPlaying(state.isPlaying(), state.getMode());
             modeSlider.setPlaying(state.isPlaying());
             flashOverlay.setPlaying(state.isPlaying(), state.getMode());
-            playBtn.setPlayingState(state.isPlaying(), state.isTooltip());
+            playBtn.setPlayingState(state.isPlaying(), state.isTooltip(), state.getMode());
 
             if (state.isFlashBlink()) flashOverlay.blink();
-            if (state.isPulseBounce()) bpmSlider.pulse();
+            if (state.isPulseBounce()) {
+                bpmSlider.pulse();
+                playBtn.pulse();
+            }
         });
     }
 
@@ -77,5 +80,6 @@ public class HomeFragment extends Fragment {
         super.onDestroyView();
         flashOverlay.reset();
         bpmSlider.resetPulse();
+        playBtn.resetPulse();
     }
 }
