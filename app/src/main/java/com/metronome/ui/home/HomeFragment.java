@@ -32,6 +32,9 @@ public class HomeFragment extends Fragment {
     private CenterButton playBtn;
     private FlashOverlayView flashOverlay;
 
+    private TempoDisplay tempoDisplay;
+    private PlaybackState playbackState;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -51,6 +54,9 @@ public class HomeFragment extends Fragment {
         playBtn = view.findViewById(R.id.c_b);
         flashOverlay = view.findViewById(R.id.flash_overlay);
 
+        tempoDisplay = new TempoDisplay(bpmText, msText);
+        playbackState = new PlaybackState(bpmSlider, modeSlider, flashOverlay, playBtn);
+
         bpmSlider.setOnProgressChangeListener(progress -> vm.setProgress(progress));
         modeSlider.setOnModeSelectedListener(mode -> vm.setMode(mode));
         playBtn.setOnClickListener(v -> vm.toggle());
@@ -58,14 +64,11 @@ public class HomeFragment extends Fragment {
 
         vm.state.observe(getViewLifecycleOwner(), state -> {
             if (state == null) return;
-            bpmText.setText(String.valueOf(state.getBpm()));
-            msText.setText(String.valueOf(state.getMs()));
-            modeSlider.setMode(state.getMode());
+
+            tempoDisplay.update(state.getBpm(), state.getMs());
             bpmSlider.setProgress(state.getProgress());
-            bpmSlider.setPlaying(state.isPlaying(), state.getMode());
-            modeSlider.setPlaying(state.isPlaying());
-            flashOverlay.setPlaying(state.isPlaying(), state.getMode());
-            playBtn.setPlayingState(state.isPlaying(), state.isTooltip(), state.getMode());
+            modeSlider.setMode(state.getMode());
+            playbackState.update(state.isPlaying(), state.isTooltip(), state.getMode());
 
             if (state.isFlashBlink()) flashOverlay.blink();
             if (state.isPulseBounce()) {
@@ -78,6 +81,8 @@ public class HomeFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+        tempoDisplay.reset();
+        playbackState.reset();
         flashOverlay.reset();
         bpmSlider.resetPulse();
         playBtn.resetPulse();

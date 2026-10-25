@@ -19,6 +19,7 @@ public class TopSliderBar extends ConstraintLayout implements Transition {
     private ImageView d45, d90, d135, d180, d225, d270;
     private static final float MAX_TOTAL_ROTATION = 270f;
     boolean isOnOff = false;
+    private float currentProgress = -1f;
 
     public interface OnProgressChangeListener {
         void onProgressChanged(int progress);
@@ -110,6 +111,8 @@ public class TopSliderBar extends ConstraintLayout implements Transition {
     }
 
     public void setProgress(float progress) {
+        if (Float.compare(this.currentProgress, progress) == 0) return;
+        this.currentProgress = progress;
         float totalRotationDegrees = (progress * MAX_TOTAL_ROTATION) / 100f;
         float viewRotation;
         if (totalRotationDegrees <= 45) {

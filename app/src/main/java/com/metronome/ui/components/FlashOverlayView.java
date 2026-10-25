@@ -4,12 +4,16 @@ import android.content.Context;
 import android.os.Looper;
 import android.util.AttributeSet;
 import android.view.View;
+import android.view.animation.LinearInterpolator;
 
 import androidx.annotation.Nullable;
 
 import com.metronome.core.model.Mode;
 
 public class FlashOverlayView extends View {
+
+    // Screen flash duration matching hardware torch pulse duration (35ms = ~2 frames at 60Hz)
+    private static final long FLASH_DURATION_MS = 35;
 
     public FlashOverlayView(Context context) {
         super(context);
@@ -29,7 +33,7 @@ public class FlashOverlayView extends View {
     private void init() {
         setBackgroundColor(0xFFFFFFFF);
         setAlpha(0f);
-        setVisibility(View.GONE);
+        setVisibility(View.VISIBLE);
         setClickable(false);
         setFocusable(false);
     }
@@ -42,13 +46,12 @@ public class FlashOverlayView extends View {
 
     public void blink() {
         Runnable action = () -> {
-            setVisibility(View.VISIBLE);
             animate().cancel();
-            setAlpha(0.8f);
+            setAlpha(0.85f);
             animate()
                     .alpha(0f)
-                    .setDuration(80)
-                    .withEndAction(() -> setVisibility(View.GONE))
+                    .setDuration(FLASH_DURATION_MS)
+                    .setInterpolator(new LinearInterpolator())
                     .start();
         };
         if (Looper.myLooper() == Looper.getMainLooper()) {
@@ -62,7 +65,6 @@ public class FlashOverlayView extends View {
         Runnable action = () -> {
             animate().cancel();
             setAlpha(0f);
-            setVisibility(View.GONE);
         };
         if (Looper.myLooper() == Looper.getMainLooper()) {
             action.run();

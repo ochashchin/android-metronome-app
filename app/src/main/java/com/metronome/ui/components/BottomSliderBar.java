@@ -80,6 +80,7 @@ public class BottomSliderBar extends ConstraintLayout implements Transition {
     }
 
     public void setMode(Mode mode) {
+        if (this.activeMode == mode) return;
         activeMode = mode;
         transition(mode);
     }

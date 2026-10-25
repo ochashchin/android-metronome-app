@@ -10,6 +10,8 @@ import com.gmail.specifickarma.metronome.R;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
+import dagger.hilt.android.qualifiers.ApplicationContext;
+
 @Singleton
 public class SoundManager {
 
@@ -20,7 +22,7 @@ public class SoundManager {
     private boolean loaded = false;
 
     @Inject
-    public SoundManager(Context context) {
+    public SoundManager(@ApplicationContext Context context) {
         init(context);
     }
 
