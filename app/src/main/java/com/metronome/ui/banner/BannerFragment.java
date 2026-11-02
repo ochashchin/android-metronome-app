@@ -7,18 +7,23 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowMetrics;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.LinearInterpolator;
 import android.widget.FrameLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.gmail.specifickarma.metronome.R;
+import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.LoadAdError;
 
 import dagger.hilt.android.AndroidEntryPoint;
 
@@ -26,7 +31,7 @@ import dagger.hilt.android.AndroidEntryPoint;
 public class BannerFragment extends Fragment {
 
     private BannerViewModel vm;
-    private CardView cardView;
+    private ConstraintLayout bannerLayout;
     private FrameLayout adContainer;
     private AdView adView;
 
@@ -42,8 +47,12 @@ public class BannerFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         vm = new ViewModelProvider(this).get(BannerViewModel.class);
 
-        cardView = view.findViewById(R.id.cardView);
+        bannerLayout = view.findViewById(R.id.banner);
         adContainer = view.findViewById(R.id.adContainer);
+
+        if (bannerLayout != null) {
+            bannerLayout.setAlpha(0f);
+        }
 
         vm.bannerOnLoad();
 
@@ -53,13 +62,6 @@ public class BannerFragment extends Fragment {
             if (state.isOnLoad() && !state.isOnPlayed() && !state.isOnAnim()) {
                 onLoad();
                 vm.bannerOnAnim();
-            }
-            if (state.isOnLoad() && state.isOnAnim() && !state.isOnPlayed()) {
-                animate(true);
-                vm.bannerOnPlay();
-            }
-            if (state.isOnPlayed() && state.isOnAnim() && state.isOnLoad()) {
-                animate(false);
             }
             if (state.isOnPlayed() && state.isOnAnim() && state.isOnLoad() && state.isOnReset()) {
                 onLoad();
@@ -87,6 +89,10 @@ public class BannerFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
 
+        if (bannerLayout != null) {
+            bannerLayout.clearAnimation();
+        }
+
         if (adView != null) {
             adView.destroy();
             adView = null;
@@ -104,6 +110,23 @@ public class BannerFragment extends Fragment {
             adContainer.removeAllViews();
             adContainer.addView(adView);
             adView.setAdSize(getAdSize());
+
+            adView.setAdListener(new AdListener() {
+                @Override
+                public void onAdLoaded() {
+                    super.onAdLoaded();
+                    fadeInBanner();
+                }
+
+                @Override
+                public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+                    super.onAdFailedToLoad(loadAdError);
+                    if (bannerLayout != null) {
+                        bannerLayout.clearAnimation();
+                        bannerLayout.setAlpha(0f);
+                    }
+                }
+            });
         }
 
         adView.loadAd(new AdRequest.Builder().build());
@@ -135,14 +158,36 @@ public class BannerFragment extends Fragment {
         return AdSize.getCurrentOrientationAnchoredAdaptiveBannerAdSize(requireContext(), adWidth);
     }
 
-    private void animate(boolean animate) {
-        if (animate) {
-            cardView.animate()
-                    .alpha(1f)
-                    .setDuration(1000)
-                    .start();
-        } else {
-            cardView.setAlpha(1);
-        }
+    private void fadeInBanner() {
+        if (bannerLayout == null) return;
+
+        AlphaAnimation fade = new AlphaAnimation(0f, 1f);
+        fade.setStartOffset(300);
+        fade.setDuration(1000);
+        fade.setInterpolator(new LinearInterpolator());
+        fade.setFillAfter(true);
+        fade.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+                if (bannerLayout != null) {
+                    bannerLayout.setAlpha(1f); // Ensure view is visible so the AlphaAnimation handles rendering
+                }
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                if (bannerLayout != null) {
+                    bannerLayout.setAlpha(1f);
+                }
+                if (vm != null) {
+                    vm.bannerOnPlay();
+                }
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {}
+        });
+
+        bannerLayout.startAnimation(fade);
     }
 }
