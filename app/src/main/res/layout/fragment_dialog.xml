@@ -77,21 +77,20 @@
             app:layout_constraintTop_toBottomOf="@id/_4">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:alpha="0.9"
                     android:letterSpacing="0.01"
-                    android:lineSpacingExtra="-6dp"
-                    android:lineSpacingMultiplier="1.5"
+                    android:lineSpacingMultiplier="1.2"
                     android:text="@string/dialog_body"
                     android:textAlignment="center"
-                    android:textSize="16sp"
+                    android:gravity="center_horizontal"
+                    android:textSize="15sp"
                     android:textColor="@color/dialog_body_text"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias=".7" />
+                    app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
